@@ -221,7 +221,7 @@
     - 线性回归
         - 示例：'../example/example3_1.py'
     - 逻辑回归
-                
+        - 示例：'../example/example3_2.py'               
     
     
     
