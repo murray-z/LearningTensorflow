@@ -4,7 +4,7 @@
 
 ## CHAPTER 2. Go with the Flow: Up and Running with TensorFlow
 - tensorflow 简单示例
-    - example2_2.py: MNIST识别，仅将图片像素与权重相乘
+    - ./example/example2_2.py: MNIST识别，仅将图片像素与权重相乘
 
 ## CHAPTER 3. Understanding TensorFlow Basics 
 - 计算图(Computation Graph)
@@ -53,7 +53,7 @@
             outs = sess.run(fetches)
         ```
         
--  数据类型
+-  数据类型 dtype
     - dtype
         - c = tf.constant(4.0, dtype=tf.float64)
     - 转换数据类型
@@ -122,7 +122,7 @@
         print('matmul result:\n {}'.format(b.eval()))
         sess.close()
         ```
-    - 改变tensor形状
+    - 改变tensor形状, 转置
         - tf.transpose()
         
 - 命名空间 Name Scopes
@@ -144,6 +144,85 @@
         prefix_name/c:0
         prefix_name/c_1:0
         ```
+- Variables, Placeholders, and Simple Optimization
+    - Variables
+        - 创建： tf.Variable()
+        - 初始化： tf.global_variables_initializer()
+        - 示例：
+        ```
+        # 正态分布
+        init_val = tf.random_normal((1,5),0,1)
+        var = tf.Variable(init_val, name='var')
+        print("pre run: \n{}".format(var))
+        
+        init = tf.global_variables_initializer()
+        with tf.Session() as sess:
+            sess.run(init)
+            post_var = sess.run(var)
+        print("\npost run: \n{}".format(post_var))
+        
+        
+        Out:
+        pre run:
+        Tensor("var/read:0", shape=(1, 5), dtype=float32)
+        post run:
+        [[ 0.85962135 0.64885855 0.25370994 -0.37380791 0.63552463]] 
+        ```
+        
+    - Placeholders
+        - 可以看作是空的变量，在后面可以给他赋值
+        - 定义： ph = tf.placeholder(tf.float32,shape=(None,10))  # None:任意形状
+        - 赋值： sess.run(s,feed_dict={x: X_data,w: w_data})
+        - 示例：
+        ```
+        x_data = np.random.randn(5,10)
+        w_data = np.random.randn(10,1)
+
+        with tf.Graph().as_default():
+            x = tf.placeholder(tf.float32,shape=(5,10))
+            w = tf.placeholder(tf.float32,shape=(10,1))
+            b = tf.fill((5,1),-1.)
+            xw = tf.matmul(x,w)
+            xwb = xw + b
+            
+            # reduce_max: 取最大值
+            s = tf.reduce_max(xwb)
+            with tf.Session() as sess:
+                outs = sess.run(s,feed_dict={x: x_data,w: w_data})
+        
+        print("outs = {}".format(outs))
+                
+        Out:
+        outs = 3.06512
+        ```
+        
+    - Optimization
+        - 损失函数
+            - 均方误差：MSE(mean squared error)
+                ```
+                loss = tf.reduce_mean(tf.square(y_true-y_pred))
+                ```
+                
+            - 交叉熵：cross entropy
+                ```
+                loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=y_true,logits=y_pred)
+                loss = tf.reduce_mean(loss)
+                ```
+                
+        - 优化器
+            - 梯度下降
+            - 一般为了加快计算速度，采用随机梯度下降
+            - 示例：
+            ```
+            optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+            train = optimizer.minimize(loss)
+            ```
+- Example
+    - 线性回归
+        - 示例：'../example/example3_1.py'
+    - 逻辑回归
+                
+    
     
     
     
