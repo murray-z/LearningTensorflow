@@ -4,7 +4,7 @@
 
 ## CHAPTER 2. Go with the Flow: Up and Running with TensorFlow
 - tensorflow 简单示例
-    - ./example/example2_2.py: MNIST识别，仅将图片像素与权重相乘
+    - [MNIST识别，仅将图片像素与权重相乘](./example/example2_2.py)
 
 ## CHAPTER 3. Understanding TensorFlow Basics 
 - 计算图(Computation Graph)
@@ -218,10 +218,51 @@
             train = optimizer.minimize(loss)
             ```
 - Example
-    - 线性回归
-        - 示例：'../example/example3_1.py'
-    - 逻辑回归
-        - 示例：'../example/example3_2.py'               
+    - [线性回归](./example/example3_1.py)
+    - [逻辑回归](./example/example3_2.py)
+        
+        
+## CHAPTER 4. Convolutional Neural Networks  
+
+- 卷积神经网络与全连接网络
+    - 全连接网络：各个神经元与所有前一层神经元相连 
+    - 卷积神经网络：各个神经元只是与前一层部分神经元相连 
+    - 图示：
+    ![](./graph/全连接网络与卷积网络示例.png)  
+    
+    
+- 卷积层 (Convolution)
+    - tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')  
+        - x: 输入图片
+            - [None, 28, 28, 1] ([输入图片个数, 图片长, 图片宽, 通道数])
+        - W: 卷积核大小
+            - [5, 5, 1, 32] ([卷积核长，卷积核宽，通道数，卷积核数])
+        - strides: 卷积核移动步长
+        - padding
+            - SAME (经卷积后，图片大小不变，为图片加0)
+        
+- 激活函数 (Activation functions)
+    - 卷积操作和全连接层都是线性操作，因此多层网络可以用单层进行替换
+    - 激活函数可将线性神经网络变成非线性
+    - 常用激活函数：
+    ![](./graph/常用激活函数.png)
+    
+- 池化层 (Pooling)
+    - Max_Pooling
+        - tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+        - ksize: pooling大小
+        - strides: 如何移动
+        - padding: 是否补零
+        
+- Dropout
+    - 防止过拟合，训练时将某些神经元赋值为0
+    - tf.nn.dropout(layer, keep_prob=keep_prob)
+        - keep_prob: 保留的神经元比例
+        - 一般训练时keep_prob=0.5, 测试时keep_prob=1.0
+        
+- MODEL
+    - [MNIST](./example/example4_1.py)
+        - ![](./graph/mnist_cnn.png)
     
     
     
