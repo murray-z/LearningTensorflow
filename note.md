@@ -268,7 +268,7 @@
 # CHAPETR 5. Text I: Working with Text and Sequences, and TensorBoard Visualization
 
 ## RNN基本结构图示：
-![](./graph/RNN基本结构.png) 
+- ![](./graph/RNN基本结构.png) 
 
 ## tensorboard
 - 步骤
@@ -286,8 +286,16 @@
 
 ## RNN解决文本问题
 - [构造虚拟文本数据集](./example/example5_2_1.py)
+- [采用lstm对文本数据集进行分类](./example/example5_2_2.py)
+
+
+# CHAPTER 6. Text II: Word Vectors, Advanced RNN, and Embedding Visualization
     
-    
+## 词向量（word embedding）
+- Word2vec
+    - skip-grams
+    ![skip-gram](./graph/skip_grams.png)
+     
     
     
     
