@@ -262,9 +262,30 @@
         
 - MODEL
     - [MNIST](./example/example4_1.py)
-        - ![](./graph/mnist_cnn.png)
+    ![](./graph/mnist_cnn.png)
+        
+        
+# CHAPETR 5. Text I: Working with Text and Sequences, and TensorBoard Visualization
+
+## RNN基本结构图示：
+![](./graph/RNN基本结构.png) 
+
+## tensorboard
+- 步骤
+    - tf.summary.scale('name', var)
+    - merged = tf.summary.merge_all()
+    - write_file = tf.summary.FileWriter('log_path', graph=tf.get_default_graph())
+    - summary = sess.run(merged, feed_dict={})
+    - write_file.add_summary(summary, i)
+- 运行
+    - tensorboard --logdir=log_path
     
-    
+
+## RNN解决图像分类
+- [采用rnn解决mnist识别](./example/example5_1.py) 
+
+## RNN解决文本问题
+- [构造虚拟文本数据集](./example/example5_2_1.py)
     
     
     
