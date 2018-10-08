@@ -11,7 +11,7 @@ import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
 
-DATA_DIR = './mnist'
+DATA_DIR = '../mnist'
 STEPS = 1000
 
 
