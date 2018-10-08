@@ -267,34 +267,34 @@
         
 # CHAPETR 5. Text I: Working with Text and Sequences, and TensorBoard Visualization
 
-## RNN基本结构图示：
-- ![](./graph/RNN基本结构.png) 
+- RNN基本结构图示：
+    - ![](./graph/RNN基本结构.png) 
 
-## tensorboard
-- 步骤
-    - tf.summary.scale('name', var)
-    - merged = tf.summary.merge_all()
-    - write_file = tf.summary.FileWriter('log_path', graph=tf.get_default_graph())
-    - summary = sess.run(merged, feed_dict={})
-    - write_file.add_summary(summary, i)
-- 运行
-    - tensorboard --logdir=log_path
+- tensorboard
+    - 步骤
+        - tf.summary.scale('name', var)
+        - merged = tf.summary.merge_all()
+        - write_file = tf.summary.FileWriter('log_path', graph=tf.get_default_graph())
+        - summary = sess.run(merged, feed_dict={})
+        - write_file.add_summary(summary, i)
+    - 运行
+        - tensorboard --logdir=log_path
     
 
-## RNN解决图像分类
-- [采用rnn解决mnist识别](./example/example5_1.py) 
+- RNN解决图像分类
+    - [采用rnn解决mnist识别](./example/example5_1.py) 
 
-## RNN解决文本问题
-- [构造虚拟文本数据集](./example/example5_2_1.py)
-- [采用lstm对文本数据集进行分类](./example/example5_2_2.py)
+- RNN解决文本问题
+    - [构造虚拟文本数据集](./example/example5_2_1.py)
+    - [采用lstm对文本数据集进行分类](./example/example5_2_2.py)
 
 
 # CHAPTER 6. Text II: Word Vectors, Advanced RNN, and Embedding Visualization
     
-## 词向量（word embedding）
-- Word2vec
-    - skip-grams
-    ![skip-gram](./graph/skip_grams.png)
+- 词向量（word embedding）
+    - Word2vec
+        - skip-grams
+        ![skip-gram](./graph/skip_grams.png)
      
     
     
