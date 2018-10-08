@@ -58,7 +58,7 @@ with tf.Session() as sess:
 
         train_summary.add_summary(summary_train, i)
 
-        summary_test, _ = sess.run([merged, train_step], feed_dict={_inputs: test_data, y: test_label})
+        summary_test, acc = sess.run([merged, accuracy], feed_dict={_inputs: test_data, y: test_label})
 
         train_summary.add_summary(summary_test, i)
 
