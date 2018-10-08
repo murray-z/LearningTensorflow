@@ -295,6 +295,17 @@
     - Word2vec
         - skip-grams
         ![skip-gram](./graph/skip_grams.png)
+        
+- [训练词向量](./example/example6_1.py)
+- [采用预训练词向量及BiGRU对文本进行分类](./example/example6_2.py)
+
+# CHAPTER 7. TensorFlow Abstractions and Simplications
+
+# CHAPTER 8. Queues, Threads, and Reading Data
+
+# CHAPTER 9. Distributed TensorFlow
+
+# CHAPTER 10. Exporting and Serving Models with TensorFlow
      
     
     
